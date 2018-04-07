@@ -50,7 +50,7 @@ def alert():
         sparkMsg()
     if email:
         email()
-    
+
 
 def email():
 	smtpserver.ehlo()  # Says 'hello' to the server
@@ -64,7 +64,7 @@ def email():
 	msg['Subject'] = "Link"
 	msg['From'] = emailFrom
 	msg['To'] = emailTo
-	
+
 	# Create the body of the message (a plain-text and an HTML version).
 	text = "ALERT! There is a problem!"
 	html = """\
@@ -77,25 +77,25 @@ def email():
 	  </body>
 	</html>
 	"""
-	
+
 	# Record the MIME types of both parts - text/plain and text/html.
 	part1 = MIMEText(text, 'plain')
 	part2 = MIMEText(html, 'html')
-	
+
 	# Attach parts into message container.
 	# According to RFC 2046, the last part of a multipart message, in this case
 	# the HTML message, is best and preferred.
 	msg.attach(part1)
 	msg.attach(part2)
-	
+
 	# sendmail function takes 3 arguments: sender's address, recipient's address
 	# and message to send - here it is sent as one string.
 	smtpserver.sendmail(emailFrom, emailTo, msg.as_string())
 	smtpserver.quit()
-	
+
 
 def sparkMsg():
-#If we wanted to prompt response from chat room 
+#If we wanted to prompt response from chat room
 #        messages=api.messages.list(roomID)
 #        for message in messages:
 #            if "monitor" in message.text.lower():
@@ -108,7 +108,7 @@ def getRoomID(api, roomName):
     rooms=[room for room in rawRooms if room.title==roomName]
     if len(rooms)==0:
         api.rooms.create(roomName)
-    for room in rooms: 
+    for room in rooms:
         roomID=(room.id)
         return roomID
 

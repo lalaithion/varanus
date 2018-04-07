@@ -1,6 +1,6 @@
 import configparser, sys, os
 from twilio.rest import Client
-import sendAlert 
+import sendAlert
 
 global account_sid
 global auth_token
@@ -26,22 +26,23 @@ def getConf():
         emailPass=config['EMAIL']['EmailPass']
 
 def newTexts():
-	getConf()
-	client = Client(account_sid, auth_token)
+    getConf()
+    print(account_sid, auth_token)
+    client = Client(account_sid, auth_token)
 
-	mes = 0
-	for sms in client.messages.list(): #checks if messaged
-	    #print(sms.to)
-	    mes += 1
+    mes = 0
+    for sms in client.messages.list(): #checks if messaged
+        #print(sms.to)
+        mes += 1
 
-	return mes
+    return mes
 
 def newCalls():
-	getConf()
-	client = Client(account_sid, auth_token)
+    getConf()
+    client = Client(account_sid, auth_token)
 
-	mes = 0
-	for calls in client.calls.list():
-	    mes += 1
+    mes = 0
+    for calls in client.calls.list():
+        mes += 1
 
-	return mes
+    return mes

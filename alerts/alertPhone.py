@@ -1,8 +1,8 @@
 from twilio.rest import Client
 import sys
 import os
-sys.path.append("../phone")
-from authTokens import account_sid, auth_token
+# sys.path.append("../phone")
+from phone.authTokens import account_sid, auth_token
 
 
 def alertText():
