@@ -1,10 +1,9 @@
-#varanus
+# varanus
 a fun little security monitoring suite
 
-# Modules
-## Google Voice Number
-## LogChain
-## PixelPot
-## Honey Token Email
-## Honey User
-## Monitoring Listener
+## Modules
+### SMS and Call Detection
+### LogChain
+### PixelPot
+### Honey Token Users and Email
+### Monitoring Listener
