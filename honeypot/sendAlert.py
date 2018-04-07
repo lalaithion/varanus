@@ -39,7 +39,7 @@ def getConf():
         phoneTo=config['PHONE']['PhoneTo']
         phoneFrom=config['PHONE']['PhoneFrom']
         phone = True
-        print(acount_sid)
+        print(account_sid)
         print(auth_token)
     ##Add Email
     if (config['EMAIL']['EmailFrom']):
@@ -68,10 +68,13 @@ def getConf():
 def alert(msg):
     getConf()
     if spark:
+        print("Alerting Spark Room")
         sparkMsg(msg)
     if email:
+        print("Sending Alert Email")
         sendEmail(msg)
     if phone:
+        print("Sending Alert Text Message")
         sendTxt(msg)
 
 def sendTxt(msg):
