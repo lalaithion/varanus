@@ -1,26 +1,25 @@
 import sys
 import os
 import time
-sys.path.append(os.getcwd()+"/phone")
-from getNewTexts import newTexts
-from getNewCalls import newCalls
-sys.path.append(os.getcwd()+"/alerts")
-from alertPhone import alertText
+import phoneCheck
+import sendAlert
 
-textLen = newTexts()
-callLen = newCalls()
+textLen = phoneCheck.newTexts()
+callLen = phoneCheck.newCalls()
 
 while 1:
-	check, number = newTexts()
+	check = phoneCheck.newTexts()
 	if check > textLen:
 		print("alertText")
-		alertText()
+		#alertText()
+		sendAlert.alert("SOMEBODY TEXTING ME....HELP PLS")
 		#alertSpark.alertText()
 		textLen = check
-	check, number = newCalls()
+	check = phoneCheck.newCalls()
 	if check > callLen:
 		print("alertCall")
-		alertCall()
+		#alertCall()
+		sendAlert.alert("SOMEBODY CALLING ME....HELP PLS")
 		#alertSpark.slertCall()
 	time.sleep(30)
 
