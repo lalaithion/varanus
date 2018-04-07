@@ -1,5 +1,5 @@
 from twilio.rest import Client
-from ../../authTokens import account_sid, auth_token
+from authTokens import account_sid, auth_token
 client = Client(account_sid, auth_token)
 client.messages.create(
   to="+15716062372",

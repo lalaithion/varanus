@@ -1,12 +1,6 @@
 from twilio.rest import Client
 
-token = []
-with open("../../auth.txt", "r") as f:
-		for line in f:
-			token.append(line.strip())
-
-account_sid = token[0]
-auth_token = token[1]
+from authTokens import account_sid, auth_token
 
 client = Client(account_sid, auth_token)
 
