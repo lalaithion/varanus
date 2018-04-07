@@ -1,4 +1,4 @@
-# monitorTastic
+#varanus
 a fun little security monitoring suite
 
 # Modules
