@@ -1,3 +1,7 @@
 authTokens.py
 auth.txt
+varanus.cfg
+.DS_Store
+*.swp
+*.pyc
 __pycache__
