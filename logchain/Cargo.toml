@@ -1,0 +1,10 @@
+[package]
+name = "logchain"
+version = "0.1.0"
+authors = ["Lalaithion <izaak.weiss@gmail.com>"]
+
+[dependencies]
+rust-crypto = "^0.2"
+assert = "0.7.4"
+byteorder = "1.2.2"
+etcommon-bigint = "0.2.9"
