@@ -198,7 +198,7 @@ pub fn validate(filename: &str) -> Result<bool, std::io::Error> {
         let hashstr = parts.next().unwrap();
         let prevstr = parts.next().unwrap();
         let noncestr = parts.next().unwrap();
-        let datahash = parts.next().unwrap();
+        let _datahash = parts.next().unwrap();
         let data : Vec<&str> = parts.collect();
         let data = data.join(" : ");
 
