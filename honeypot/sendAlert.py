@@ -6,7 +6,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from twilio.rest import Client
 
-smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 global email
 global phone
 global spark
@@ -39,7 +38,7 @@ def getConf():
         phoneTo=config['PHONE']['PhoneTo']
         phoneFrom=config['PHONE']['PhoneFrom']
         phone = True
-        print(acount_sid)
+        print(account_sid)
         print(auth_token)
     ##Add Email
     if (config['EMAIL']['EmailFrom']):
@@ -68,10 +67,13 @@ def getConf():
 def alert(msg):
     getConf()
     if spark:
+        print("Alerting Spark Room")
         sparkMsg(msg)
     if email:
+        print("Sending Alert Email")
         sendEmail(msg)
     if phone:
+        print("Sending Alert Text Message")
         sendTxt(msg)
 
 def sendTxt(msg):
@@ -84,6 +86,7 @@ def sendTxt(msg):
     
 
 def sendEmail(alertMsg):
+	smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 	smtpserver.ehlo()  # Says 'hello' to the server
 	smtpserver.starttls()  # Start TLS encryption
 	smtpserver.ehlo()
@@ -96,7 +99,7 @@ def sendEmail(alertMsg):
 	msg['To'] = emailTo
 	
 	# Create the body of the message (a plain-text and an HTML version).
-	text = "ALERT! There is a problem!"
+	text = alertMsg
 	
 	# Record the MIME types of both parts - text/plain and text/html.
 	part1 = MIMEText(text, 'plain')

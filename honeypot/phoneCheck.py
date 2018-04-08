@@ -27,7 +27,6 @@ def getConf():
 
 def newTexts():
     getConf()
-    print(account_sid, auth_token)
     client = Client(account_sid, auth_token)
 
     mes = 0
