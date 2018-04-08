@@ -4,7 +4,7 @@ extern crate bigint;
 
 use std::io::prelude::*;
 use std::fs::OpenOptions;
-use std::fs::File;
+use std::fs::{File, remove_file};
 use std::io::BufReader;
 
 use crypto::{digest::Digest, sha2::Sha256};
@@ -23,7 +23,7 @@ macro_rules! assert_ok(
 );
 
 pub fn valid(bytes: &[u8; 32]) -> bool {
-    let difficulty = U256::max_value() / (U256::from(100u32));
+    let difficulty = U256::max_value() / (U256::from(100000u32));
 
     let hashnum = U256::from(bytes.iter().as_slice());
 
@@ -122,6 +122,7 @@ fn format_block(b: &LogBlock) -> String {
 
     let mut res = strs.join(" ");
     res.push('\n');
+    print!("{}",res);
     res
 }
 
@@ -175,6 +176,7 @@ impl Logger for LogFile {
 
     fn log(&mut self, msg: &str) -> Result<(), std::io::Error> {
         let block = mk_log_block(msg.to_owned(), &self.last_hash);
+        println!("{:?}", block);
         let hash = block_hash(&block);
 
         let mut file = OpenOptions::new().append(true).create(true).open(&self.filename)?;
@@ -188,18 +190,23 @@ impl Logger for LogFile {
 }
 
 
-pub fn validate(filename: &str) -> Result<bool, std::io::Error> {
-    let f = BufReader::new(File::open(filename)?);
+pub fn validate(filename: &str) -> Result<(), usize> {
+    let f = BufReader::new(File::open(filename).unwrap());
+
+    let mut lineno = 0;
 
     for line in f.lines() {
         println!("{:?}", line);
-        let okline = line?;
+        let okline = line.unwrap();
         let mut parts = okline.split(" : ");
         let hashstr = parts.next().unwrap();
         let prevstr = parts.next().unwrap();
         let noncestr = parts.next().unwrap();
         let _datahash = parts.next().unwrap();
         let data : Vec<&str> = parts.collect();
+        println!("{:?}", data);
+        let len = data.len();
+        let data = &data[..len];
         let data = data.join(" : ");
 
         let block = LogBlock {
@@ -211,10 +218,13 @@ pub fn validate(filename: &str) -> Result<bool, std::io::Error> {
         println!("{:?}", block);
 
         let hash = block_hash(&block);
-        assert_eq!(hashstr, to_hex_string(&hash));
+        if hashstr != to_hex_string(&hash) {
+            return Err(lineno);
+        }
+        lineno += 1
     }
 
-    Ok(true)
+    Ok(())
 }
 
 
@@ -242,14 +252,55 @@ mod tests {
 
     #[test]
     fn validate_log() {
-        let mut logger = LogFile::new([0;32], "write_log_test.logc");
+        let filename = "validate_log.logc";
+
+        remove_file(filename);
+
+        let mut logger = LogFile::new([0;32], filename);
         assert_ok!(logger.log("Hello world!"));
         assert_ok!(logger.log("This is a test."));
         assert_ok!(logger.log("Alright!"));
 
-        let res = validate("write_log_test.logc");
+        let res = validate(filename);
         assert_ok!(res);
-        let b = res.unwrap();
-        assert!(b);
+    }
+
+    #[test]
+    #[should_panic]
+    fn validate_bad_log() {
+        let filename = "validate_bad_log.logc";
+
+        remove_file(filename);
+
+        let mut logger = LogFile::new([0;32], filename);
+        logger.log("Hello world!");
+        logger.log("This is a test.");
+        logger.log("Alright!");
+
+        let mut outlines = Vec::new();
+        {
+            let file = BufReader::new(OpenOptions::new().read(true).open(filename).unwrap());
+            let mut i = 1;
+            for line in file.lines() {
+                if i == 0 {
+                    let mut newline = line.unwrap();
+                    newline.push_str(" evil!!!");
+                    outlines.push(newline);
+                } else {
+                    outlines.push(line.unwrap());
+                }
+                i -= 1;
+            }
+        }
+        {
+            let mut file = OpenOptions::new().write(true).open(filename).unwrap();
+            for mut line in outlines {
+                line.push_str("\n");
+                file.write(line.as_bytes());
+            }
+        }
+
+        let res = validate(filename);
+        assert_ok!(res);
     }
 }
