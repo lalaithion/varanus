@@ -31,7 +31,7 @@ def newTexts():
 
     mes = []
     for sms in client.messages.list(): #checks if messaged
-        mes.append(sms.to)
+        mes.append(sms.from_)
 
     return len(mes), mes[len(mes)-1]
 
