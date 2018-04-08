@@ -14,12 +14,13 @@ while 1:
     print(number)
     if check > textLen:
         print("#####ALERT TEXT#####")
-        sendAlert.alert("SOMEBODY TEXTING ME....HELP PLS", number)
+        sendAlert.alert("SOMEBODY TEXTING ME....HELP PLS: Text came from", number)
         textLen = check+1
     check, number = phoneCheck.newCalls()
     print(check, number)
     if check > callLen:
         print("#####ALERT CALL#####")
-        sendAlert.alert("SOMEBODY CALLING ME....HELP PLS", number)
+        sendAlert.alert("SOMEBODY CALLING ME....HELP PLS: Call came from", number)
         callLen = check+1
+        textLen += 1
     time.sleep(15)

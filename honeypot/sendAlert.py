@@ -79,7 +79,7 @@ def sendTxt(msg, number):
     client.messages.create(
         to=phoneTo,
         from_=phoneFrom,
-        body=msg + " text came from "+ str(number)
+        body=msg + str(number)
     )
     
 
@@ -97,7 +97,7 @@ def sendEmail(alertMsg, number):
 	msg['To'] = emailTo
 	
 	# Create the body of the message (a plain-text and an HTML version).
-	text = alertMsg + " text came from "+ str(number)
+	text = alertMsg + str(number)
 	
 	# Record the MIME types of both parts - text/plain and text/html.
 	part1 = MIMEText(text, 'plain')
@@ -116,7 +116,7 @@ def sparkMsg(rsp, number):
 #        for message in messages:
 #            if "monitor" in message.text.lower():
 #              if message.id != lastMessageID and message.created>lastMessageTime:
-                  SparkApi.messages.create(roomID,text=rsp + " text came from "+ str(number))
+                  SparkApi.messages.create(roomID,text=rsp +  str(number))
 
 def getRoomID(api, roomName):
     rawRooms=api.rooms.list()
