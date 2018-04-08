@@ -38,8 +38,6 @@ def getConf():
         phoneTo=config['PHONE']['PhoneTo']
         phoneFrom=config['PHONE']['PhoneFrom']
         phone = True
-        print(account_sid)
-        print(auth_token)
     ##Add Email
     if (config['EMAIL']['EmailFrom']):
         global emailFrom
