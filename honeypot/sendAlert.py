@@ -62,28 +62,28 @@ def getConf():
         roomID=getRoomID(SparkApi,roomName)
         spark = True
 
-def alert(msg):
+def alert(msg, number):
     getConf()
     if spark:
         print("Alerting Spark Room")
-        sparkMsg(msg)
+        sparkMsg(msg, number)
     if email:
         print("Sending Alert Email")
-        sendEmail(msg)
+        sendEmail(msg, number)
     if phone:
         print("Sending Alert Text Message")
-        sendTxt(msg)
+        sendTxt(msg, number)
 
-def sendTxt(msg):
+def sendTxt(msg, number):
     client = Client(account_sid, auth_token)
     client.messages.create(
         to=phoneTo,
         from_=phoneFrom,
-        body=msg
+        body=msg + " text came from "+ str(number)
     )
     
 
-def sendEmail(alertMsg):
+def sendEmail(alertMsg, number):
 	smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 	smtpserver.ehlo()  # Says 'hello' to the server
 	smtpserver.starttls()  # Start TLS encryption
@@ -97,7 +97,7 @@ def sendEmail(alertMsg):
 	msg['To'] = emailTo
 	
 	# Create the body of the message (a plain-text and an HTML version).
-	text = alertMsg
+	text = alertMsg + " text came from "+ str(number)
 	
 	# Record the MIME types of both parts - text/plain and text/html.
 	part1 = MIMEText(text, 'plain')
@@ -110,13 +110,13 @@ def sendEmail(alertMsg):
 	smtpserver.quit()
 	
 
-def sparkMsg(rsp):
+def sparkMsg(rsp, number):
 #If we wanted to prompt response from chat room 
 #        messages=api.messages.list(roomID)
 #        for message in messages:
 #            if "monitor" in message.text.lower():
 #              if message.id != lastMessageID and message.created>lastMessageTime:
-                  SparkApi.messages.create(roomID,text=rsp)
+                  SparkApi.messages.create(roomID,text=rsp + " text came from "+ str(number))
 
 def getRoomID(api, roomName):
     rawRooms=api.rooms.list()

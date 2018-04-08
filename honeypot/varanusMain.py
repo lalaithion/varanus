@@ -4,20 +4,22 @@ import time
 import phoneCheck
 import sendAlert
 
-textLen = phoneCheck.newTexts()
-callLen = phoneCheck.newCalls()
+textLen, number = phoneCheck.newTexts()
+callLen, number = phoneCheck.newCalls()
 #callLen = 1
 
 while 1:
-    check = phoneCheck.newTexts()
+    check, number = phoneCheck.newTexts()
+    print(check)
+    print(number)
     if check > textLen:
         print("#####ALERT TEXT#####")
-        sendAlert.alert("SOMEBODY TEXTING ME....HELP PLS")
+        sendAlert.alert("SOMEBODY TEXTING ME....HELP PLS", number)
         textLen = check
-
-    check = phoneCheck.newCalls()
+    check, number = phoneCheck.newCalls()
+    print(check, number)
     if check > callLen:
         print("#####ALERT CALL#####")
-        sendAlert.alert("SOMEBODY CALLING ME....HELP PLS")
+        sendAlert.alert("SOMEBODY CALLING ME....HELP PLS", number)
         callLen = check
-    time.sleep(30)
+    time.sleep(15)

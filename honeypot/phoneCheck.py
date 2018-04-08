@@ -29,19 +29,18 @@ def newTexts():
     getConf()
     client = Client(account_sid, auth_token)
 
-    mes = 0
+    mes = []
     for sms in client.messages.list(): #checks if messaged
-        #print(sms.to)
-        mes += 1
+        mes.append(sms.to)
 
-    return mes
+    return len(mes), mes[len(mes)-1]
 
 def newCalls():
     getConf()
     client = Client(account_sid, auth_token)
 
-    mes = 0
+    mes = []
     for calls in client.calls.list():
-        mes += 1
+        mes.append(calls.from_)
 
-    return mes
+    return len(mes), mes[len(mes)-1]
