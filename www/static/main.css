@@ -1,0 +1,83 @@
+a.nostyle:link {
+  text-decoration: inherit;
+  color: inherit;
+}
+a.nostyle:visited {
+  text-decoration: inherit;
+  color: inherit;
+}
+div, section, form {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+body {
+  margin: 0;
+  height: 100%;
+}
+h3 {
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+}
+#header {
+  height: 150px;
+  width: 100%;
+  background: #444;
+  color: white;
+  padding: 10px;
+  font-size: 100px;
+  font-family: sans-serif;
+}
+#main {
+  height: calc(100% - 150px);
+}
+#management {
+  width: 40%;
+  height: 100%;
+  background: #CCC;
+  float: left;
+}
+#status {
+  width: 60%;
+  height: 100%;
+  background: #CCC;
+  float: right;
+  padding: 20px;
+}
+#tokens {
+  font-size: 20px;
+  font-family: sans-serif;
+  height: 40%;
+  margin-bottom: 10%;
+}
+.token, .log {
+  padding: 10px;
+  border-radius: 10px;
+  background: #BBB;
+  margin: 3px;
+}
+#logging {
+  font-size: 20px;
+  font-family: sans-serif;
+  height: 50%;
+}
+.scroll {
+  overflow-y: scroll;
+}
+.type {
+  color: black;
+  margin-right: 10px;
+}
+.status {
+  float: right;
+}
+.fa-lock, .secure {
+  background: lightgreen;
+  color: green;
+}
+.fa-unlock, .insecure {
+  background: #744;
+  color: #F00;
+}
