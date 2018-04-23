@@ -14,6 +14,7 @@ div, section, form {
 body {
   margin: 0;
   height: 100%;
+  color: #000;
 }
 h3 {
   width: 100%;
@@ -24,26 +25,31 @@ h3 {
 #header {
   height: 150px;
   width: 100%;
-  background: #444;
-  color: white;
-  padding: 10px;
+  background: #EEE;
+  /*color: white;*/
+  padding: 27px;
   font-size: 100px;
   font-family: sans-serif;
 }
+#icon {
+  height: 100%;
+}
 #main {
   height: calc(100% - 150px);
+  padding: 40px;
 }
 #management {
-  width: 40%;
+  width: 50%;
   height: 100%;
-  background: #CCC;
-  float: left;
+  /*background: #262;*/
+  float: right;
+  padding: 20px;
 }
 #status {
-  width: 60%;
+  width: 50%;
   height: 100%;
-  background: #CCC;
-  float: right;
+  /*background: #373;*/
+  float: left;
   padding: 20px;
 }
 #tokens {
@@ -52,10 +58,21 @@ h3 {
   height: 40%;
   margin-bottom: 10%;
 }
-.token, .log {
+#tokens-insert {
+  height: 60px;
+}
+#tokens-add {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  float: left;
+}
+.token, .log, .alert, .kv {
   padding: 10px;
   border-radius: 10px;
-  background: #BBB;
+  /*background: #BBB;*/
   margin: 3px;
 }
 #logging {
@@ -63,21 +80,46 @@ h3 {
   font-family: sans-serif;
   height: 50%;
 }
+#tokens-display {
+  height: 90%;
+}
+#logging-display {
+  height: 90%;
+}
+#management-status {
+  height: 50px;
+  width: 250px;
+  margin: auto;
+  border-radius: 10px;
+  padding: 7px 10px;
+  text-align: center;
+  font-size: 30px;
+}
+#management-info {
+  height: 50%;
+}
+#management-alerts {
+  height: 50%;
+}
 .scroll {
   overflow-y: scroll;
+}
+.right {
+  float: right;
+  margin-left: 10px;
+}
+.left {
+  float: left;
 }
 .type {
   color: black;
   margin-right: 10px;
 }
-.status {
-  float: right;
-}
 .fa-lock, .secure {
-  background: lightgreen;
-  color: green;
+  background: #BFB;
+  color: #060;
 }
-.fa-unlock, .insecure {
-  background: #744;
-  color: #F00;
+.fa-exclamation-circle, .insecure {
+  background: #FBB;
+  color: #600;
 }
