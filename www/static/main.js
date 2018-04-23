@@ -383,9 +383,22 @@ function manage(entry) {
   }
 }
 
-function add_alert() {
-  console.log(arguments);
-  console.log(this);
+function add_alert(form) {
+  var type = form.childNodes[1].value;
+  var location = form.childNodes[3].value;
+  form.childNodes[3].value = '';
+  var icons = {
+    email: 'fa-envelope',
+    number_call: 'fa-phone-square',
+    number_text: 'fa-mobile-alt',
+  }
+  var display_text = document.createTextNode(location);
+  var new_alert = alerts_template.cloneNode(true);
+  new_alert.removeAttribute('id');
+  new_alert.getElementsByClassName('type')[0].classList.add(icons[type]);
+  new_alert.insertBefore(display_text, new_alert.childNodes[2]);
+  new_alert.style.display = '';
+  alerts_display.appendChild(new_alert);
 }
 
 manage(tokens[0])

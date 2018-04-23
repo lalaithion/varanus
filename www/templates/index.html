@@ -8,14 +8,14 @@
   <link rel='icon' type='image/png' href='../static/monitor2.png'></link>
 </head>
 <body>
-  <section id='header'>
-    <img id='icon' src='../static/monitor2.png'></img>
+  <section id='header' class='menu'>
+    <!-- <img id='icon' src='../static/monitor2.png'></img> -->
     Varanus
     <button class='right'>Logout</button>
     <button class='right'>Account</button>
   </section>
-  <section id='main'>
-    <section id='status'>
+  <section id='main' class='background'>
+    <section id='status' class='menu'>
       <div id='tokens'>
         <h3>Honeytokens</h3>
         <div class='scroll' id='tokens-display'>
@@ -33,18 +33,20 @@
         </div>
       </div>
     </section>
-    <section id='management'>
+    <section id='management' class='menu'>
       <h2 id='management-selected'></h2>
       <div id='management-status'>
         <div class='left'></div><i class='type fas'></i>
       </div>
       <div id='management-info'>
-        <h4>Information</h4>
-        <div id='management-kv-display' class='scroll'>
-          <div id='management-kv-template' class='kv' style='display: none'>
-            <div class='left management-key'></div>
-            <i class='right fas fa-edit'></i>
-            <div class='right management-value'></div>
+        <div id='management-kv'>
+          <h4>Information</h4>
+          <div id='management-kv-display' class='scroll'>
+            <div id='management-kv-template' class='kv' style='display: none'>
+              <div class='left management-key'></div>
+              <i class='right fas fa-edit'></i>
+              <div class='right management-value'></div>
+            </div>
           </div>
         </div>
         <div id='management-alerts'>
@@ -56,14 +58,14 @@
             </div>
           </div>
           <div id='alerts-add'>
-            <form action='#'>
+            <form action='#' onsubmit='add_alert(this)'>
               <select>
                 <option value="email">Email</option>
-                <option value="email">Phone (call)</option>
-                <option value="email">Phone (text)</option>
+                <option value="number_call">Phone (call)</option>
+                <option value="number_text">Phone (text)</option>
               </select>
               <input type='text' label='email'></input>
-              <input type='submit' value='Add' onclick='add_alert()'></input>
+              <input type='submit' value='Add'></input>
           </div>
         </div>
       </div>

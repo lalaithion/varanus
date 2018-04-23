@@ -15,6 +15,7 @@ body {
   margin: 0;
   height: 100%;
   color: #000;
+  font-family: sans-serif;
 }
 h3 {
   width: 100%;
@@ -25,7 +26,6 @@ h3 {
 #header {
   height: 150px;
   width: 100%;
-  background: #EEE;
   /*color: white;*/
   padding: 27px;
   font-size: 100px;
@@ -50,11 +50,11 @@ h3 {
   height: 100%;
   /*background: #373;*/
   float: left;
+  width: 40%;
   padding: 20px;
 }
 #tokens {
   font-size: 20px;
-  font-family: sans-serif;
   height: 40%;
   margin-bottom: 10%;
 }
@@ -77,7 +77,6 @@ h3 {
 }
 #logging {
   font-size: 20px;
-  font-family: sans-serif;
   height: 50%;
 }
 #tokens-display {
@@ -85,6 +84,12 @@ h3 {
 }
 #logging-display {
   height: 90%;
+}
+#management-kv-display {
+  height: calc(100% - 40px);
+}
+#alerts-display {
+  height: calc(100% - 60px);
 }
 #management-status {
   height: 50px;
@@ -96,6 +101,9 @@ h3 {
   font-size: 30px;
 }
 #management-info {
+  height: 70%;
+}
+#management-kv {
   height: 50%;
 }
 #management-alerts {
@@ -116,10 +124,24 @@ h3 {
   margin-right: 10px;
 }
 .fa-lock, .secure {
-  background: #BFB;
-  color: #060;
+  background: #C2FBC9;
+  color: #000;
 }
 .fa-exclamation-circle, .insecure {
-  background: #FBB;
-  color: #600;
+  background: #FF3F00;
+  color: #000;
+}
+.menu {
+  background: #6f6f6f;
+  color: white;
+  border-radius: 3px;
+}
+.background {
+  background: #515151;
+}
+.alert, .kv {
+  background: white;
+  border-radius: 10px;
+  color: #000;
+  height: 35px;
 }
