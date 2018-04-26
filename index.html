@@ -1,76 +1,24 @@
+<!-- <!DOCTYPE html> -->
+
 <html>
 <head>
-  <title>
-    Varanus
-  </title>
-  <link rel='stylesheet' href='www/static/main.css'/>
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css' integrity='sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg' crossorigin='anonymous'>
-  <link rel='icon' type='image/png' href='www/static/monitor2.png'></link>
+  <title>Varanus</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <section id='header' class='menu'>
-    <!-- <img id='icon' src='../static/monitor2.png'></img> -->
-    Varanus
-    <button class='right'>Logout</button>
-    <button class='right'>Account</button>
-  </section>
-  <section id='main' class='background'>
-    <section id='status' class='menu'>
-      <div id='tokens'>
-        <h3>Honeytokens</h3>
-        <div class='scroll' id='tokens-display'>
-          <div id='tokens-template' class='token' style='display: none'>
-            <i class='type fas'></i><i class='right status fas'></i>
-          </div>
-        </div>
-      </div>
-      <div id='logging'>
-        <h3>Logging</h3>
-        <div class='scroll' id='logging-display'>
-          <div id='logging-template' class='log' style='display: none'>
-            <i class='right status fas'></i>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id='management' class='menu'>
-      <h2 id='management-selected'></h2>
-      <div id='management-status'>
-        <div class='left'></div><i class='type fas'></i>
-      </div>
-      <div id='management-info'>
-        <div id='management-kv'>
-          <h4>Information</h4>
-          <div id='management-kv-display' class='scroll'>
-            <div id='management-kv-template' class='kv' style='display: none'>
-              <div class='left management-key'></div>
-              <i class='right fas fa-edit'></i>
-              <div class='right management-value'></div>
-            </div>
-          </div>
-        </div>
-        <div id='management-alerts'>
-          <h4>Alert methods</h4>
-          <div id='alerts-display' class='scroll'>
-            <div id='alerts-template' class='alert' style='display: none'>
-              <i class='type fas'></i>
-              <i class='right fas fa-edit'></i>
-            </div>
-          </div>
-          <div id='alerts-add'>
-            <form action='#' onsubmit='add_alert(this)'>
-              <select>
-                <option value="email">Email</option>
-                <option value="number_call">Phone (call)</option>
-                <option value="number_text">Phone (text)</option>
-              </select>
-              <input type='text' label='email'></input>
-              <input type='submit' value='Add'></input>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
+  <div id="main">
+    <div class="title">
+      <h1>VARANUS</h1>
+      <h4>Advanced Intrusion<br/>Detection as a Service</h4>
+    </div>
+    <div class="contact">
+      P.O. Box 7039<br/>
+      Boulder, CO<br/>
+      80306-7039<br/><br/>
+      (970) 834-6936<br/><br/>
+      admin@varan.us<br/>
+      www.varan.us
+    </div>
+  </div>
 </body>
-<script type='text/javascript' src='www/static/main.js'></script>
 </html>
