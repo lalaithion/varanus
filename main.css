@@ -1,0 +1,45 @@
+div, section, form {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+@font-face {
+    font-family: bebas;
+    src: url(fonts/BebasKai-Regular.otf);
+}
+@font-face {
+    font-family: avenir-next;
+    src: url(fonts/avenir-next-regular.ttf);
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  height: 100%;
+}
+h1 {
+  margin: 0;
+  font-size: 100px;
+  font-family: bebas;
+}
+h4 {
+  margin: 0;
+  font-size: 40px;
+}
+#main {
+  height: 100%;
+  font-family: avenir-next;
+}
+.title {
+  padding: 80px;
+  color: #FFFFFF;
+  background: #acc6ca;
+  height: 70%;
+}
+.contact {
+  padding: 40px;
+  color: #acc6ca;
+  background: #313e48;
+  height: 30%;
+}
